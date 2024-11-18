@@ -10,7 +10,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/Signoz-ui-pocs/",
+  base: "/signoz-pocs/",
   build: {
     outDir: "build", // Change output directory to 'build'
   },
