@@ -175,12 +175,12 @@ export const EnhancedSelect: React.FC<EnhancedSelectProps> = ({
   };
 
   return (
-    <div className={`relative ${className}`} ref={dropdownRef}>
-      <div className="relative">
+    <div className={`relative ${className} w-full max-w-lg`} ref={dropdownRef}>
+      <div className="relative w-full max-w-lg">
         <input
           value={searchTerm}
           placeholder={placeholder}
-          className="w-full border border-gray-300 bg-white rounded-md px-4 py-2 pr-10 text-gray-700 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="w-full max-w-lg border border-gray-300 bg-white rounded-md px-4 py-2 pr-10 text-gray-700 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           onClick={handleInputClick}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -192,7 +192,7 @@ export const EnhancedSelect: React.FC<EnhancedSelectProps> = ({
         />
         {searchTerm && (
           <button
-            className="absolute right-3 top-2 text-gray-500 hover:text-gray-700 bg-transparent p-1 rounded-full"
+            className="absolute right-3 top-1 text-gray-500 hover:text-gray-700 bg-transparent p-1 rounded-full"
             onClick={() => setSearchTerm("")}
             aria-label="Clear input"
           >
@@ -201,9 +201,9 @@ export const EnhancedSelect: React.FC<EnhancedSelectProps> = ({
         )}
       </div>
       {showDropdown && (
-        <div className="absolute z-10 w-full bg-white shadow-lg rounded-md mt-2 max-h-60 overflow-y-auto border border-gray-200">
+        <div className="absolute z-10 w-max bg-white shadow-lg rounded-md mt-2 overflow-y-auto border border-gray-200 max-w-lg max-h-[500px]">
           {filteredOptions.length > 0 && (
-            <div>
+            <div className="max-h-72 overflow-auto">
               {filteredOptions.map((option) => (
                 <div key={option}>{renderOption(option)}</div>
               ))}
@@ -214,13 +214,13 @@ export const EnhancedSelect: React.FC<EnhancedSelectProps> = ({
             !filteredOptions
               .map((item) => item.toLowerCase())
               .includes(searchTerm.toLowerCase()) && (
-              <>
+              <div>
                 <div className="my-2 border-t border-gray-300" />
                 <div className="text-sm text-gray-500 px-3 py-2">
                   Manually Added Options:
                 </div>
                 {renderOption(searchTerm, true)}
-              </>
+              </div>
             )}
         </div>
       )}
